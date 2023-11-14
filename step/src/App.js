@@ -16,14 +16,18 @@ const App = () => {
   };
 
   return (
-    <div className="title">
-      <h1 className="text-3xl font-bold mb-4">☼ єДніпро</h1>
+    <div>
+      <div className="title">
+        <h1 className="title-text">☼ єДніпро</h1>
 
-      <div className='button-container'>
-        <button onClick={() => navigateTo('home')} className="button">Home</button>
-        <button onClick={() => navigateTo('card-editor')} className="button">Проєкти</button>
+        <div className='button-container'>
+          <button onClick={() => navigateTo('home')} className="button">Каталог проєктів</button>
+          <button onClick={() => navigateTo('card-editor')} className="button">Управління проєктами</button>
+          <button onClick={() => navigateTo('card-editor')} className="button">Детальніше про нас</button>
+          <button onClick={() => navigateTo('card-editor')} className="button">Про Дніпро</button>
+        </div>
       </div>
-      
+   <div className='body-part'>
       {currentPage === 'home' && (
         <div>
           <ProjectList projects={projects} />
@@ -33,6 +37,7 @@ const App = () => {
         <CardEditor />
       )}
     </div>
+</div>
   );
 };
 

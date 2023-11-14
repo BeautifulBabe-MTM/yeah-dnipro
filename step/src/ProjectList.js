@@ -4,9 +4,9 @@ import './App.css';
 const ProjectList = ({ projects }) => {
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-2">Project List</h2>
+      <h2 className="title-name">Список усіх опублікованних проєктів</h2>
       {projects.length === 0 ? (
-        <p>No projects available</p>
+        <p>Жодного проєкту немає!</p>
       ) : (
         <ul>
           {projects.map((project) => (

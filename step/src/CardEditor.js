@@ -4,7 +4,7 @@ import './App.css';
 const CardEditor = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-4">Card Editor</h2>
+      <h2 className="title-name">Управління проєктами</h2>
       {/* Здесь разместите компонент для редактирования карточек */}
     </div>
   );
