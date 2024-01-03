@@ -11,6 +11,17 @@ const ProjectList = () => {
     setSearchTerm(event.target.value);
   };
 
+  const filterProjects = () => {
+    console.log('Search term:', searchTerm);
+    const filteredProjects = projects.filter((project) =>
+      project.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    console.log('Filtered projects:', filteredProjects);
+    return filteredProjects;
+  };
+
+  const filteredProjects = filterProjects();
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -38,10 +49,8 @@ const ProjectList = () => {
         <p>Жодного проєкту немає!</p>
       ) : (
         <ul className="project-list">
-          {projects.map((project) => (
-            // <li key={project._id} className="mb-4">
-              <ProjectCard {...project} />
-            // </li>
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.name} {...project} />
           ))}
         </ul>
       )}
