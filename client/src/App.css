@@ -11,7 +11,8 @@
   /* background-color: rgb(255, 218, 185); */
   background-color: rgb(255, 182, 193);
   width: 98%;
-  height: 690px;
+  min-height: 850px;
+  height: auto;
   padding: 1%;
 }
 
@@ -55,15 +56,43 @@
   background-color: #2980b9;
 }
 
+/* Errors */
+
+.error{
+  color: red;
+}
+
+/* Inputs */
+
 .search-input {
   width: 10%;
-  /* height: 20px; */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: 16px;
   box-sizing: border-box;
   font-size: 16px;
+}
+
+.proj-input{
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.proj-input-details{
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  
 }
 
 
@@ -159,7 +188,7 @@
 
 .deleleProj-button:hover{
   transform: scale(0.96);
-  background-color: rgb(139, 6, 6);
+  background-color: rgb(180, 1, 1);
 }
 
 .updProj-button{
@@ -189,4 +218,80 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: larger;
   margin-bottom: 10px;
+}
+
+.button-save {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  color: #ffffff;
+  background-color: #3498db;
+  border-radius: 15px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-save:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+
+
+/* Other */
+
+.modal form label,
+.modal form input,
+.modal form button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal{
+  background-color: #ccc;
+  width: 300px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.modal-name{
+  margin-left: 25%;
+}
+
+/* Select container */
+
+.select-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 160px;
+}
+
+.select-container select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 160px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-container::after {
+  content: '\25BC'; 
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.select-container select option {
+  padding: 10px;
 }
