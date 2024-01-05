@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
-const DeleteModal = ({ projects, onCancel, onDelete }) => {
+const DeleteModal = ({ projects, projectName, onCancel, onDelete }) => {
   const [selectedProject, setSelectedProject] = useState('');
 
   return (
     <div className="modal">
       <h3 className='modal-name'>Видалити проєкт</h3>
-      <p>Виберіть проєкт для видалення:</p>
+      <p>Виберіть проєкт для видалення: {projectName}</p>
       <div className='select-container'>
-        <select onChange={(e) => setSelectedProject(e.target.value)} value={selectedProject}>
+        <select onChange={(e) => setSelectedProject(e.target.value)} >
           <option value="">----------</option>
           {projects && projects.map((project) => (
-            <option key={project.id} value={project.id}>
-              {project.id}
+            <option key={project._id} value={project._id}>
+              {project.name} - {project._id}
             </option>
           ))}
         </select>

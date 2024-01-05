@@ -7,24 +7,17 @@ const App = () => {
   const [projects, setProjects] = useState([]);
   const [currentPage, setCurrentPage] = useState('home');
 
-
-  const addProject = (newProject) => {
-    setProjects((prevProjects) => [...prevProjects, newProject]);
-  };
-
   const navigateTo = (page) => {
     setCurrentPage(page);
   };
 
   return (
     <div>
+      <h1 className="title-text">☼ єДніпро</h1>
       <div className="title">
-        <h1 className="title-text">☼ єДніпро</h1>
-
-        <div className='button-container'>
-          <button onClick={() => navigateTo('home')} className="button">Голова сторінка</button>
+        <div className='button-container-navbar'>
+          <button onClick={() => navigateTo('home')} className="button">Головна сторінка</button>
           <button onClick={() => navigateTo('card-editor')} className="button">Управління проєктами</button>
-
         </div>
       </div>
       <div className='body-part'>

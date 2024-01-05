@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
+const { ObjectId } = mongoose.Schema.Types;
+const morgan = require('morgan');
+
 
 const validate = (validations) => {
   return async (req, res, next) => {
@@ -20,6 +23,9 @@ const validate = (validations) => {
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(morgan('dev'));
+
+
 mongoose.connect('mongodb+srv://admin:123zxc34@cluster0.hoxv5bc.mongodb.net/eDnipro', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -34,6 +40,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 const projectSchema = new mongoose.Schema({
+  _id: ObjectId,
   name: String,
   description: String,
   deadline: String,
@@ -87,7 +94,7 @@ app.post('/api/addProject',
 
 app.put('/api/updProject/:id', async (req, res) => {
   try {
-    const projectId = req.params.id;
+    const projectId = req.params._id;
     const updatedProjectData = req.body;
 
     const updatedProject = await Project.findByIdAndUpdate(
@@ -108,9 +115,9 @@ app.put('/api/updProject/:id', async (req, res) => {
 });
 
 
-app.delete('/api/deleteProject/:projectToDelete', async (req, res) => {
+app.delete('/api/deleteProject/:_id', async (req, res) => {
   try {
-    const projectId = req.params.projectToDelete;
+    const projectId = req.params._id;
     const deletedProject = await Project.findByIdAndDelete(projectId);
 
     if (!deletedProject) {

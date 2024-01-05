@@ -4,7 +4,7 @@ import DeleteModal from './Modals/DeleteModal';
 
 const CardEditor = () => {
   const [newProject, setNewProject] = useState({
-    id: '',
+    _id: '',
     name: '',
     description: '',
     deadline: '',
@@ -89,11 +89,13 @@ const CardEditor = () => {
 
   const handleDeleteProject = async () => {
     try {
-      const response = await axios.delete(`https://yeahdnipro-proj.cyclic.app/api/deleteProject/${projectToDelete}`);
-
-      console.log('Проект успешно удален:', response.data);
-
-      setIsDeleteModalOpen(false);
+      if (projectToDelete) {
+        const response = await axios.delete(`https://yeahdnipro-proj.cyclic.app/api/deleteProject/${projectToDelete}`);
+        console.log('Проект успешно удален:', response.data);
+        setIsDeleteModalOpen(false);
+      } else {
+        console.error('Не выбран проект для удаления');
+      }
     } catch (error) {
       console.error('Ошибка при удалении проекта:', error);
     }
@@ -104,15 +106,15 @@ const CardEditor = () => {
     setIsDeleteModalOpen(true);
   };
 
-  const closeDeleteModal = () => {
-    setProjectToDelete(null);
+  const closeDeleteModal = (projectId) => {
+    setProjectToDelete(projectId);
     setIsDeleteModalOpen(false);
   };
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('https://yeahdnipro-proj.cyclic.app/api/getProjects');
+        const response = await axios.get('https://yeahdnipro-proj.cyclic.app/api/projects');
         setProjects(response.data);
       } catch (error) {
         console.error('Ошибка при загрузке списка проектов:', error);
@@ -125,12 +127,12 @@ const CardEditor = () => {
   return (
     <div>
       <h2 className="card-editor">Управління проєктами</h2>
-      <div className="container">
+      <div className="container-crud">
         <button type="button" onClick={() => setIsAddProjectModalOpen(true)} className='createProj-button'>
           Створити проєкт
         </button>
         <button type="button" onClick={handleUpdateProject} className='updProj-button'>
-          Оновити проєкт
+          Редагувати проєкт
         </button>
         <button type="button" onClick={() => openDeleteModal(newProject.id)} className='deleleProj-button'>
           Видалити проєкт
@@ -196,13 +198,37 @@ const CardEditor = () => {
       )}
 
       {isDeleteModalOpen && (
+        // <div className="modal">
+        //   <DeleteModal
+        //     projects={projects}
+        //     projectName={projectToDelete && projects.find((project) => project._id === projectToDelete) ? projects.find((project) => project._id === projectToDelete).name : ''}
+        //     onDelete={() => handleDeleteProject(projectToDelete)}
+        //     onCancel={closeDeleteModal}
+        //   />
+        // </div>
+
+
         <div className="modal">
-          <DeleteModal
-            projects={projects}  
-            projectName={projectToDelete ? projects.find((project) => project.id === projectToDelete).name : ''}
-            onDelete={() => handleDeleteProject(projectToDelete)}
-            onCancel={closeDeleteModal}
-          />
+          <h3 className='modal-name'>Видалити проєкт</h3>
+          <p>Виберіть проєкт для видалення: {projects.name}</p>
+          <div className='select-container'>
+            <select onChange={(e) => setProjectToDelete(e.target.value)} >
+              <option value="">----------</option>
+              {projects && projects.map((project) => (
+                <option key={project._id} value={project._id}>
+                  {project.name} - {project._id}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="delete-modal-buttons">
+            <button type="button" onClick={() => onDelete(projectToDelete)} className='button-save'>
+              Видалити
+            </button>
+            <button onClick={onCancel} className="button-save">
+              Закрити
+            </button>
+          </div>
         </div>
       )}
 

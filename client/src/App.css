@@ -1,22 +1,22 @@
-.title{
+.title {
   width: 100%;
-  height: 200px;
-  background-color: rgb(176, 224, 230);
+  height: 20px;
+  background-color: rgb(255, 255, 255);
   display: grid;
   align-items: center;
   justify-content: center;
 }
 
-.body-part{
+.body-part {
   /* background-color: rgb(255, 218, 185); */
-  background-color: rgb(255, 182, 193);
+  background-color: rgb(233, 233, 233);
   width: 98%;
   min-height: 850px;
   height: auto;
   padding: 1%;
 }
 
-.text-box{
+.text-box {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -27,16 +27,21 @@
   border-color: dodgerblue;
 }
 
-.title-text{
-  margin-left: 35%;
+.title-text {
+  margin-left: 5%;
   color: rgb(35, 87, 117);
+}
+
+.button-container-navbar {
+  display: flex;
+  margin-top: -17%;
 }
 
 .button-container {
   display: flex;
 }
 
-.button{
+.button {
   display: inline-table;
   padding: 10px 20px;
   font-size: 16px;
@@ -58,7 +63,7 @@
 
 /* Errors */
 
-.error{
+.error {
   color: red;
 }
 
@@ -74,7 +79,7 @@
   font-size: 16px;
 }
 
-.proj-input{
+.proj-input {
   width: 300px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -84,7 +89,7 @@
   font-size: 16px;
 }
 
-.proj-input-details{
+.proj-input-details {
   width: 300px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -92,14 +97,14 @@
   margin-bottom: 16px;
   box-sizing: border-box;
   font-size: 16px;
-  
+
 }
 
 
 .project-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; 
+  gap: 20px;
 }
 
 /* Project cards */
@@ -113,11 +118,13 @@
   position: relative;
   width: 580px;
   height: 200px;
-  background: rgba(255, 255, 255, 0.8); 
+  background: rgba(255, 255, 255, 0.8);
+  
 }
 
 .project-card:hover {
-  transform: scale(1.01); 
+  transform: scale(1.01);
+  background-color: #dfdfdf;
 }
 
 .project-image {
@@ -139,7 +146,7 @@
 }
 
 .project-card:hover .project-details {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .project-title {
@@ -157,9 +164,15 @@
   align-items: center;
 }
 
-.createProj-button{
+.container-crud {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.createProj-button {
   display: block;
-  background-color: rgb(4, 160, 4);
+  background-color: rgb(219, 255, 219);
   color: black;
   width: 500px;
   height: 50px;
@@ -169,14 +182,14 @@
   margin-bottom: 10px;
 }
 
-.createProj-button:hover{
+.createProj-button:hover {
   transform: scale(0.96);
-  background-color: rgb(5, 119, 5);
+  background-color: rgb(119, 226, 119);
 }
 
-.deleleProj-button{
+.deleleProj-button {
   display: block;
-  background-color: rgb(216, 3, 3);
+  background-color: rgb(255, 199, 199);
   color: black;
   width: 500px;
   height: 50px;
@@ -186,14 +199,14 @@
   margin-bottom: 10px;
 }
 
-.deleleProj-button:hover{
+.deleleProj-button:hover {
   transform: scale(0.96);
-  background-color: rgb(180, 1, 1);
+  background-color: rgb(235, 126, 126);
 }
 
-.updProj-button{
+.updProj-button {
   display: block;
-  background-color: rgb(43, 203, 214);
+  background-color: rgb(194, 251, 255);
   color: black;
   width: 500px;
   height: 50px;
@@ -203,21 +216,9 @@
   margin-bottom: 10px;
 }
 
-.updProj-button:hover{
+.updProj-button:hover {
   transform: scale(0.96);
-  background-color: rgb(21, 144, 153);
-}
-
-.createProj-button{
-  display: block;
-  background-color: rgb(4, 160, 4);
-  color: black;
-  width: 500px;
-  height: 50px;
-  border-radius: 50px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: larger;
-  margin-bottom: 10px;
+  background-color: rgb(128, 210, 216);
 }
 
 .button-save {
@@ -250,7 +251,7 @@
   margin-bottom: 10px;
 }
 
-.modal{
+.modal {
   background-color: #ccc;
   width: 300px;
   border-radius: 50px;
@@ -258,7 +259,7 @@
   margin-right: 20px;
 }
 
-.modal-name{
+.modal-name {
   margin-left: 25%;
 }
 
@@ -284,7 +285,7 @@
 }
 
 .select-container::after {
-  content: '\25BC'; 
+  content: '\25BC';
   position: absolute;
   top: 50%;
   right: 10px;
